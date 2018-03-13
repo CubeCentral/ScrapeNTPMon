@@ -5,7 +5,7 @@
 #   The Raw Scrape file is the data received from the monitoring site, which is then processed into the Indexed Output.
 #   The Indexed Output File is re-indexed and cleared of duplicates.
 #   The Number of Rows to fetch from the monitoring site will vary depending upon how often this process is run.
-#   If it is run frequently, the number may be lower.  If it is run once a day, a value around the default of 70 is suggested.
+#   If it is run frequently, the number may be lower.  If it is run once a day, a value around the default of 80 is suggested.
 #   The monitoring site will not return more than 4000 rows in any query, which corresponds to approximately two months worth of monitoring data.   
 #
 #   Author:  Written and Tested by **CubeCentral Labs**          Contact:  cubecentralATgmailDOTcom
