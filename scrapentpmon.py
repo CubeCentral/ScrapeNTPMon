@@ -159,7 +159,7 @@ except:
 # Note: this will simply append the new fetch onto the existing file
 print(" "*(ipaddrlen-5),"Writing out to Scrape file ...",end=' ')
 try:
-    RawScrapeFile = open(RawScrapeFilePath, 'a')
+    RawScrapeFile = open(str(RawScrapeFilePath), 'a')
     FetchedData.to_csv(RawScrapeFile,index=False,header=False)
     RawScrapeFile.close()
     print("OK",len(FetchedData.index),"Rows")
@@ -171,7 +171,7 @@ except:
 # for duplicate processing...
 print(" "*(ipaddrlen-10),"Opening Scrape file for reading ...",end=' ')
 try:
-    RawScrapeFile = open(RawScrapeFilePath, 'r')
+    RawScrapeFile = open(str(RawScrapeFilePath), 'r')
     CheckData=pd.read_csv(RawScrapeFile,names=['ts_epoch','ts','offset','step','score','leap'])
     RawScrapeFile.close()
     lenCheckData=len(CheckData.index)
@@ -193,7 +193,7 @@ except:
 # Output the new data to the finished file
 print(" "*(ipaddrlen-13),"Writing out to Indexed Output file ...",end=' ')
 try:
-    IndexedOutputFile = open(IndexedOutputFilePath,'w')
+    IndexedOutputFile = open(str(IndexedOutputFilePath),'w')
     CheckData.to_csv(IndexedOutputFile,index=False,header=False)
     IndexedOutputFile.close()
     print("OK",len(CheckData.index),"Rows written out")
