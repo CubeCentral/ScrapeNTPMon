@@ -42,7 +42,17 @@ python scrapentpmon.py -h
 or
 python3 scrapentpmon.py -h
 
-usage: scrapentpmon.py [-h] [-r R] [-s S] [-o O] [-q] IPv4Address
+usage: scrapentpmon.py [-h] [-r R] [-s S] [-o O] [-d] [-q] IPv4Address
+
+Scrapes the monitoring data from www.pool.ntp.org and places it into two comma
+separated value files. The Raw Scrape file is the data received from the
+monitoring site, which is then processed into the Indexed Output. The Indexed
+Output File is re-indexed and cleared of duplicates. The Number of Rows to
+fetch from the monitoring site will vary depending upon how often this process
+is run. If it is run frequently, the number may be lower. If it is run once a
+day, a value around the default of 70 is suggested. The monitoring site will
+not return more than 4000 rows in any query, which corresponds to
+approximately two months worth of monitoring data.
 
 positional arguments:
   IPv4Address  IP address of NTP Pool server data to lookup. Must be IPv4 and
@@ -56,6 +66,8 @@ optional arguments:
                Default is ./RawScrapeData.csv
   -o O         path and filename for file used to store re-indexed results.
                Default is ./IndexedOutput.csv
+  -d           Include a header line in re-indexed Indexed Output file.
+               Default is no header line.
   -q           Do not output any messages. This includes any errors or
                warnings.
 

@@ -59,8 +59,12 @@ parser.add_argument("IPv4Address",help="IP address of NTP Pool server data to lo
 parser.add_argument("-r", help="number of rows of data to fetch from monitoring site.  Default is 70", default=70,type=int)
 parser.add_argument("-s", help="path and filename for file used to store raw scrape data.  Default is ./RawScrapeData.csv", default='./RawScrapeData.csv',type=str)
 parser.add_argument("-o", help="path and filename for file used to store re-indexed results.  Default is ./IndexedOutput.csv", default='./IndexedOutput.csv', type=str)
-parser.add_argument("-q", action="store_true",help="Do not output any messages. This includes any errors or warnings.")
+parser.add_argument("-d", help="Include a header line in re-indexed Indexed Output file.  Default is no header line.",default=False,action="store_true")
+parser.add_argument("-q", action="store_true",help="Do not output any messages. This includes any errors or warnings.", default=False)
 args = parser.parse_args()
+
+HeaderInc = args.d
+
 
 # This "turns off" output to standard out if the Quiet option is selected
 if args.q:
@@ -194,7 +198,7 @@ except:
 print(" "*(ipaddrlen-13),"Writing out to Indexed Output file ...",end=' ')
 try:
     IndexedOutputFile = open(str(IndexedOutputFilePath),'w')
-    CheckData.to_csv(IndexedOutputFile,index=False,header=False)
+    CheckData.to_csv(IndexedOutputFile,index=False,header=HeaderInc)
     IndexedOutputFile.close()
     print("OK",len(CheckData.index),"Rows written out")
 except:
