@@ -2,7 +2,7 @@
 Scrape the monitoring data from www.pool.ntp.org and place it into local files
 
 
-### Description:
+#### Description:
 
 Python program to scrape the monitoring data from www.pool.ntp.org and place it into two comma separated value files.
 The Raw Scrape file is the data received from the monitoring site, which is then processed into the Indexed Output.
@@ -12,14 +12,14 @@ If it is run frequently, the number may be lower.  If it is run once a day, a va
 The monitoring site will not return more than 4000 rows in any query, which corresponds to approximately two months worth of monitoring data.   
 
 
-### Author:
+#### Author:
 Written and Tested by **CubeCentral Labs**
 
-### Contact:
+#### Contact:
 cubecentralATgmailDOTcom
 
 
-### License:
+#### License:
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -33,7 +33,7 @@ GNU General Public License for more details.
 Review the GNU General Public License at <http://www.gnu.org/licenses/>
 
 
-### IMPORTANT NOTICE:
+#### IMPORTANT NOTICE:
 
 This program was written *without* the permission or direction of anyone, especially those at pool.ntp.org.
 The use of this program should be done with consideration to their website and their infrastructure.
@@ -42,7 +42,7 @@ If they request that this program not be used against their website, then by all
 strongly encourages everyone to use it carefully, lightly, and respectfully.  Comments and questions are welcome.
 
 
-### Less Important Notice:
+#### Less Important Notice:
 
 I am not a professional programmer, and I am sure that it shows.  This was written at a hobbyist level for hobbyists.
 Feel free to make changes to the program, and please do let me know of any changes or improvements that you make.
@@ -53,7 +53,7 @@ I am going to try to put this on GitHub, so we will see how well that goes.
 
 python scrapentpmon.py -h
 
-or
+*or*
 
 python3 scrapentpmon.py -h
 
