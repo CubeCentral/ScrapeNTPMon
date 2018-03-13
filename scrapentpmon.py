@@ -30,8 +30,7 @@
 #   **CubeCentral Labs** will not be held responsible for the use or misuse of this program in any way shape or form and
 #   strongly encourages everyone to use it carefully, lightly, and respectfully.  Comments and questions are welcome.
 #
-# 
-#  
+#
 
 import sys, os
 import pandas as pd
