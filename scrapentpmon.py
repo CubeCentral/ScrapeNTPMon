@@ -43,7 +43,7 @@ import ipaddress
 # Set up command-line option parsing
 parser = argparse.ArgumentParser(description="Scrapes the monitoring data from www.pool.ntp.org and places it into two comma separated value files.  The Raw Scrape file is the data received from the monitoring site, which is then processed into the Indexed Output.  The Indexed Output File is re-indexed and cleared of duplicates.  The Number of Rows to fetch from the monitoring site will vary depending upon how often this process is run.  If it is run frequently, the number may be lower.  If it is run once a day, a value around the default of 70 is suggested.  The monitoring site will not return more than 4000 rows in any query, which corresponds to approximately two months worth of monitoring data.")
 parser.add_argument("IPaddress",help="the IP Address of NTP Pool server data to lookup.  Must be either an IPv4 or IPv6 address and not a hostname.",type=str)
-parser.add_argument("-r", help="the number of rows of data to fetch from monitoring site.  Default is 70.", default=70,type=int)
+parser.add_argument("-r", help="the number of rows of data to fetch from monitoring site.  Default is 80.", default=80,type=int)
 parser.add_argument("-s", help="path and filename for file used to store raw scrape data.  Default is ./RawScrapeData.csv", default='./RawScrapeData.csv',type=str)
 parser.add_argument("-o", help="path and filename for file used to store re-indexed results.  Default is ./IndexedOutput.csv", default='./IndexedOutput.csv', type=str)
 parser.add_argument("-d", help="Include a header line in re-indexed Indexed Output file.  Default is no header line.",default=False,action="store_true")

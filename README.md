@@ -8,7 +8,7 @@ Python program to scrape the monitoring data from www.pool.ntp.org and place it 
 The Raw Scrape file is the data received from the monitoring site, which is then processed into the Indexed Output.
 The Indexed Output File is re-indexed and cleared of duplicates.
 The Number of Rows to fetch from the monitoring site will vary depending upon how often this process is run.
-If it is run frequently, the number may be lower.  If it is run once a day, a value around the default of 70 is suggested.
+If it is run frequently, the number may be lower.  If it is run once a day, a value around the default of 80 is suggested.
 The monitoring site will not return more than 4000 rows in any query, which corresponds to approximately two months worth of monitoring data.   
 
 
@@ -78,7 +78,7 @@ optional arguments:
 
   -h, --help   show this help message and exit
   
-  -r R         number of rows of data to fetch from monitoring site. Default is 70
+  -r R         number of rows of data to fetch from monitoring site. Default is 80
   
   -s S         path and filename for file used to store raw scrape data.  Default is ./RawScrapeData.csv
   
