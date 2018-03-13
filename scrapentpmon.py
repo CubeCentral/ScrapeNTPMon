@@ -110,6 +110,7 @@ numrows = args.r
 print(" "*(ipaddrlen-8),"Checking Raw Scrape Data file ...",end=' ')
 try:
     RawScrapeFilePath = Path(args.s)
+    RawScrapeFilePath = RawScrapeFilePath.expanduser()
     print("OK")
 except:
     print("Error: Problem with Raw Scrape Data filename or path.  Exiting.")
@@ -118,6 +119,7 @@ except:
 print(" "*(ipaddrlen-7),"Checking Indexed Output file ...",end=' ')
 try:
     IndexedOutputFilePath = Path(args.o)
+    IndexedOutputFilePath = IndexedOutputFilePath.expanduser()
     print("OK")
 except:
     print("Error: Problem with Indexed Output filename or path.  Exiting.")
@@ -200,7 +202,11 @@ try:
     IndexedOutputFile = open(str(IndexedOutputFilePath),'w')
     CheckData.to_csv(IndexedOutputFile,index=False,header=HeaderInc)
     IndexedOutputFile.close()
-    print("OK",len(CheckData.index),"Rows written out")
+    print("OK",len(CheckData.index),"Rows written out",end=' ')
+    if HeaderInc: 
+        print("with header line")
+    else:
+        print("without header line")
 except:
     print("Error: Problem writing to Indexed Output file.  Exiting.")
     raise SystemExit(1)
