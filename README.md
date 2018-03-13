@@ -72,8 +72,7 @@ approximately two months worth of monitoring data.
 
 positional arguments:
 
-  IPaddress   the IP Address of NTP Pool server data to lookup. 
-              Must be either an IPv4 or IPv6 address and not a hostname.
+  *IPaddress*        the IP Address of NTP Pool server data to lookup.  Must be either an IPv4 or IPv6 address and not a hostname.
 
 optional arguments:
 
