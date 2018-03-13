@@ -9,10 +9,7 @@ The Number of Rows to fetch from the monitoring site will vary depending upon ho
 If it is run frequently, the number may be lower.  If it is run once a day, a value around the default of 70 is suggested.
 The monitoring site will not return more than 4000 rows in any query, which corresponds to approximately two months worth of monitoring data.   
 
-Author:
-Written and Tested by **CubeCentral Labs**
-Contact:
-cubecentralATgmailDOTcom
+Author: Written and Tested by **CubeCentral Labs**            Contact: cubecentralATgmailDOTcom
 
 License:
 This program is free software: you can redistribute it and/or modify
