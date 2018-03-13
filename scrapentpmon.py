@@ -36,7 +36,6 @@
 
 import sys, os
 import pandas as pd
-import csv
 import argparse
 from pathlib import Path
 import ipaddress
