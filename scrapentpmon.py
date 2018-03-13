@@ -30,7 +30,7 @@
 #   **CubeCentral Labs** will not be held responsible for the use or misuse of this program in any way shape or form and
 #   strongly encourages everyone to use it carefully, lightly, and respectfully.  Comments and questions are welcome.
 #
-#   Version 2.01
+#   Version 2.02
 #
 
 import sys, os
@@ -69,6 +69,7 @@ except:
 ipaddrlen = len(ipaddr)
 
 # Evaluate the Number of Rows given to be sure they are in range
+print(" "*(ipaddrlen+7),"Number of Rows ...",end=' ')
 if args.r < 1:
     print("Error: Number of Rows must be more than zero.")
     raise SystemExit(1)
@@ -78,11 +79,11 @@ if args.r > 4000:
     raise SystemExit(1)
 
 # Number of rows appears to be valid and has passed the tests
-print(" "*(ipaddrlen+7),"Number of Rows ... OK")
+print("OK")
 numrows = args.r
 
 # Convert the entered path/filename into the proper format depending upon OS
-print(" "*(ipaddrlen-8),"Checking Raw Scrape Data file ...",end=' ')
+print(" "*(ipaddrlen-3),"Checking Raw Scrape file ...",end=' ')
 try:
     RawScrapeFilePath = Path(args.s)
     RawScrapeFilePath = RawScrapeFilePath.expanduser()
@@ -102,12 +103,10 @@ except:
 
 print(" "*(ipaddrlen+2),"Filenames and paths ... OK")
 
+
 # Set the URL to use
 fetchurl = 'http://www.pool.ntp.org/scores/' + ipaddr + '/log?limit=' + str(numrows)
 
-#
-# BEGIN Processing
-#
 
 # Perform the data fetch from the site
 print(" "*(ipaddrlen+8),"Fetching Data ...",end=' ')
@@ -145,8 +144,7 @@ except:
     print("Error: Problem writing to Scrape File.  Exiting.")
     raise SystemExit(1)
 
-# Now re-open the File fully into memory
-# for duplicate processing...
+# Now re-open the File fully into memory for duplicate processing...
 print(" "*(ipaddrlen-10),"Opening Scrape file for reading ...",end=' ')
 try:
     RawScrapeFile = open(str(RawScrapeFilePath), 'r')
