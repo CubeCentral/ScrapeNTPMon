@@ -31,31 +31,16 @@
 #   strongly encourages everyone to use it carefully, lightly, and respectfully.  Comments and questions are welcome.
 #
 #
-
 import sys, os
 import pandas as pd
 import csv
 import argparse
 from pathlib import Path
-import socket
-
-# Function to check validity of IPv4 Address Format
-def validate_ip(s):
-    a = s.split('.')
-    if len(a) != 4:
-        return False
-    for x in a:
-        if not x.isdigit():
-            return False
-        i = int(x)
-        if i < 0 or i > 255:
-            return False
-    return True
-
+import ipaddress
 
 # Set up command-line option parsing
 parser = argparse.ArgumentParser(description="Scrapes the monitoring data from www.pool.ntp.org and places it into two comma separated value files.  The Raw Scrape file is the data received from the monitoring site, which is then processed into the Indexed Output.  The Indexed Output File is re-indexed and cleared of duplicates.  The Number of Rows to fetch from the monitoring site will vary depending upon how often this process is run.  If it is run frequently, the number may be lower.  If it is run once a day, a value around the default of 70 is suggested.  The monitoring site will not return more than 4000 rows in any query, which corresponds to approximately two months worth of monitoring data.")
-parser.add_argument("IPv4Address",help="IP address of NTP Pool server data to lookup.  Must be IPv4 and not a hostname.",type=str)
+parser.add_argument("IPaddress",help="the IP Address of NTP Pool server data to lookup.  Must be either an IPv4 or IPv6 address and not a hostname.",type=str)
 parser.add_argument("-r", help="the number of rows of data to fetch from monitoring site.  Default is 70.", default=70,type=int)
 parser.add_argument("-s", help="path and filename for file used to store raw scrape data.  Default is ./RawScrapeData.csv", default='./RawScrapeData.csv',type=str)
 parser.add_argument("-o", help="path and filename for file used to store re-indexed results.  Default is ./IndexedOutput.csv", default='./IndexedOutput.csv', type=str)
@@ -65,31 +50,20 @@ args = parser.parse_args()
 
 HeaderInc = args.d
 
-
 # This "turns off" output to standard out if the Quiet option is selected
 if args.q:
     sys.stdout = open(os.devnull, 'w')
 
-# Evaluate the entered IP address to see if it is valid - consists of two tests
-print("Evaluating IP Address "+args.IPv4Address+" ...",end=' ')
-
-if validate_ip(args.IPv4Address):
-    print("OK")
-else:
-    print("ERROR: Invalid IP Address Format.")
-    raise SystemExit(1)
-
-print("   Testing IP Address "+args.IPv4Address+" ...",end=' ')
-
+# Evaluate the entered IP address to see if it is valid
+print("Evaluating IP Address "+args.IPaddress+" ...",end=' ')
 try:
-    socket.inet_aton(args.IPv4Address)
+    ipaddr = str(ipaddress.ip_address(args.IPaddress))
     print("OK")
-except socket.error:
-    print("Error: IP Address failed test.")
+except:
+    print("Invalid Address entered")
     raise SystemExit(1)
 
-# IPv4 Address appears to be valid and has passed the tests
-ipaddr = args.IPv4Address
+# IP Address appears to be valid and has passed the tests
 ipaddrlen = len(ipaddr)
 
 # Evaluate the Number of Rows given to be sure they are in range
@@ -104,7 +78,6 @@ if args.r > 4000:
 # Number of rows appears to be valid and has passed the tests
 print(" "*(ipaddrlen+7),"Number of Rows ... OK")
 numrows = args.r
-
 
 # Convert the entered path/filename into the proper format depending upon OS
 print(" "*(ipaddrlen-8),"Checking Raw Scrape Data file ...",end=' ')
@@ -125,9 +98,7 @@ except:
     print("Error: Problem with Indexed Output filename or path.  Exiting.")
     raise SystemExit(1)
 
-
 print(" "*(ipaddrlen+2),"Filenames and paths ... OK")
-
 
 # Set the URL to use
 fetchurl = 'http://www.pool.ntp.org/scores/' + ipaddr + '/log?limit=' + str(numrows)
@@ -144,7 +115,6 @@ try:
 except:
     print("Error: Cannot read from site.  Exiting.")
     raise SystemExit(1)
-
 
 # Reverse the order of the data, putting the newest record last
 print(" "*(ipaddrlen+6),"Reordering Data ...",end=' ')
@@ -211,8 +181,7 @@ except:
     print("Error: Problem writing to Indexed Output file.  Exiting.")
     raise SystemExit(1)
 
+# All done, report and end
 print()
 print("Processing finished successfully.  No errors reported.  Inspect Indexed Output file for results.")
 raise SystemExit(0)
-
-
