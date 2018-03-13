@@ -159,6 +159,7 @@ except:
 # Drop the duplicate entries from the data
 print(" "*(ipaddrlen-13),"Reindexing and dropping duplicates ...",end=' ')
 try:
+    CheckData.sort_values('ts',inplace=True)
     CheckData.drop_duplicates(keep='first',inplace=True)
     lenAfterDrop=len(CheckData.index)
     print("OK",lenCheckData-lenAfterDrop,"Duplicate Rows discarded")
