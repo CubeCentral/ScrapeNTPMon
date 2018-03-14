@@ -50,11 +50,12 @@ I am going to try to put this on GitHub, so we will see how well that goes.
 
 
 ### Usage:
-python scrapentpmon.py -h
+`python scrapentpmon.py -h`
 
 *or*
 
-python3 scrapentpmon.py -h
+`python3 scrapentpmon.py -h`
+
 
 
 ```
