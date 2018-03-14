@@ -71,19 +71,30 @@ return more than 4000 rows in any single query, which corresponds to
 approximately two months worth of monitoring data.
 
 positional arguments:
-  IPaddress   the IP Address of NTP Pool Server data to lookup. Must be either
-              an IPv4 or IPv6 address and not a hostname.
+
+
+  *IPaddress*   the IP Address of NTP Pool Server data to lookup. Must be either
+                an IPv4 or IPv6 address and not a hostname.
+                
+                
 
 optional arguments:
+
+
   -h, --help  show this help message and exit
+  
   -r R        the number of rows of data to fetch from monitoring site.
               Default is 80.
+              
   -o O        the path and filename for the writeable result data file.
               Default is ./scrapentpmon.csv
+              
   -d          include a header line in the data file describing the fields.
               Default is no header line.
+              
   -q          quiet operation. Do not output any messages. This includes any
               errors or warnings. Use with care.
+              
   -v          show program's version number and exit
 
 
