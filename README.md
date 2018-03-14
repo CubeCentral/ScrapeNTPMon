@@ -72,16 +72,14 @@ return more than 4000 rows in any single query, which corresponds to
 approximately two months worth of monitoring data.
 
 
-##### positional arguments:
+positional arguments:
 
-
-  *IPaddress*   the IP Address of NTP Pool Server data to lookup. Must be either
-                an IPv4 or IPv6 address and not a hostname.
+  IPaddress   the IP Address of NTP Pool Server data to lookup. Must be either
+              an IPv4 or IPv6 address and not a hostname.
                 
                 
 
-##### optional arguments:
-
+optional arguments:
 
   -h, --help  show this help message and exit
   
