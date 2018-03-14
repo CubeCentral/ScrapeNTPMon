@@ -70,7 +70,8 @@ and dropped, consider lowering this number. The monitoring site will not
 return more than 4000 rows in any single query, which corresponds to
 approximately two months worth of monitoring data.
 
-positional arguments:
+
+##### positional arguments:
 
 
   *IPaddress*   the IP Address of NTP Pool Server data to lookup. Must be either
@@ -78,7 +79,7 @@ positional arguments:
                 
                 
 
-optional arguments:
+##### optional arguments:
 
 
   -h, --help  show this help message and exit
