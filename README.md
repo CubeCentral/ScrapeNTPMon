@@ -1,7 +1,7 @@
 # ScrapeNTPMon
 Scrape the monitoring data from www.pool.ntp.org and place it into a local file
 
-### Version 3.00
+### Version 3.01
 
 #### Description:
 Python program to scrape the monitoring data from www.pool.ntp.org and place it into a sorted, indexed, comma separated value file.
