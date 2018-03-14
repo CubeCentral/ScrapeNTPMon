@@ -33,7 +33,7 @@
 #   **CubeCentral Labs** will not be held responsible for the use or misuse of this program and strongly 
 #   encourages everyone to use this program carefully, lightly, and respectfully.  Comments and questions are welcome.
 #
-#   Version 3.00
+#   Version 3.01
 #
 #
 
@@ -47,11 +47,11 @@ import ipaddress
 # Set up command-line option parsing
 parser = argparse.ArgumentParser(description="Scrape the monitoring data from www.pool.ntp.org and place it into a sorted, indexed, comma separated value file.  The data is received from the monitoring site, added to the file, which is then re-indexed and cleared of duplicates.  The Number of Rows to fetch from the monitoring site will vary depending upon how often this process is run.  When it is run frequently, this number may be lower.  When it is run once a day, a value around the default of 80 is suggested.  If, at the end of the program, many rows are marked as Duplicate and dropped, consider lowering this number.  The monitoring site will not return more than 4000 rows in any single query, which corresponds to approximately two months worth of monitoring data.")
 parser.add_argument("IPaddress",help="the IP Address of NTP Pool Server data to lookup.  Must be either an IPv4 or IPv6 address and not a hostname.",type=str)
-parser.add_argument("-r", help="the number of rows of data to fetch from monitoring site.  Default is 80.", default=80,type=int)
-parser.add_argument("-o", help="the path and filename for the writeable result data file.  Default is ./scrapentpmon.csv", default='./scrapentpmon.csv',type=str)
+parser.add_argument("-r", help="the number of rows of data to fetch from monitoring site.  Default is 80.", default=80,type=int, metavar='rows')
+parser.add_argument("-o", help="the path and filename for the writeable result data file.  Default is ./scrapentpmon.csv", default='./scrapentpmon.csv',type=str, metavar='filename')
 parser.add_argument("-d", help="include a header line in the data file describing the fields.  Default is no header line.",default=False,action="store_true")
 parser.add_argument("-q", action="store_true",help="quiet operation.  Do not output any messages. This includes any errors or warnings.  Use with care.", default=False)
-parser.add_argument('-v', action='version', version='%(prog)s 3.00')
+parser.add_argument('-v', action='version', version='%(prog)s 3.01')
 args = parser.parse_args()
 
 
