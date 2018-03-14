@@ -57,7 +57,8 @@ python scrapentpmon.py -h
 python3 scrapentpmon.py -h
 
 
-```usage: scrapentpmon.py [-h] [-r R] [-o O] [-d] [-q] [-v] IPaddress
+```
+usage: scrapentpmon.py [-h] [-r R] [-o O] [-d] [-q] [-v] IPaddress
 
 Scrape the monitoring data from www.pool.ntp.org and place it into a sorted,
 indexed, comma separated value file. The data is received from the monitoring
@@ -96,8 +97,8 @@ approximately two months worth of monitoring data.
   -q          quiet operation. Do not output any messages. This includes any
               errors or warnings. Use with care.
               
-  -v          show program's version number and exit```
-
+  -v          show program's version number and exit
+```
 
 ### Suggestion:
 Put it in its own directory and run it from there.  The data file will be created there and may be accessed from there.
